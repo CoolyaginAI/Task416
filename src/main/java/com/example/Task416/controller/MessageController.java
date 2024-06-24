@@ -33,6 +33,7 @@ public class MessageController {
 
     @PutMapping("/message/{id}")
     public ResponseEntity<Message> updateMessage(@PathVariable int id, @RequestBody Message message) {
+
         HttpStatus status = messageRepository.existsById(id) ? HttpStatus.OK : HttpStatus.CREATED;
 
         messageRepository.findById(id).get().setTitle(message.getTitle());
